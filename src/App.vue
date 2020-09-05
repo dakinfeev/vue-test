@@ -1,23 +1,26 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="card">
+    <div class="card-body">
+      <UsersList/>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import UsersList from './components/UsersList.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    UsersList
   }
 }
 </script>
 
 <style>
 #app {
+  min-width: 320px;
+  max-width: 1920px;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
