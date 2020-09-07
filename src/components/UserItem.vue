@@ -24,7 +24,7 @@ export default {
       return `${position}.`
     },
     speedString: function () {
-      return `${this.speed} km/h`
+      return `${this.data.speed} km/h`
     },
     time: function() {
       const time = moment().millisecond(this.data.time).format('mm:ss.SSS')
