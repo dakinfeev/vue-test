@@ -5,7 +5,6 @@
         <span class="fa fa-spinner fa-spin"></span> Loading
       </div>
     </transition>
-    <UserFilter v-on:set-filter="setFilter"/>
     <div class="list-group" id="infinite-list">
       <div class="list-group-item" v-for="(item, key) in items" :key="key">
         <UserItem :data="item" :index="key"></UserItem>
@@ -17,18 +16,15 @@
 <script>
 import users from '@/api/users';
 import UserItem from '@/components/UserItem';
-import UserFilter from '@/components/UserFilter';
 export default {
   name: "UsersList",
   components: {
-    UserFilter,
     UserItem
   },
   data: function () {
     return {
       loading: false,
       nextItem: 1,
-      filter: '',
       items: [
       ]
     }
@@ -46,7 +42,7 @@ export default {
     loadMore () {
       this.loading = true;
       let items = [];
-      users.getUsers(this.filter).then(response => {
+      users.getUsers().then(response => {
         items = response.data.users;
       });
       setTimeout(() => {
@@ -54,11 +50,6 @@ export default {
         this.loading = false;
       }, 500);
     },
-    setFilter(event) {
-      this.items = [];
-      this.filter = event.name;
-      this.loadMore();
-    }
   }
 }
 </script>
