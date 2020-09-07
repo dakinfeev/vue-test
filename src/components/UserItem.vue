@@ -2,7 +2,7 @@
     <div class="item-wrap" v-on:click="highlight" v-bind:class="{'highlight-class' : isClick}">
       <span class="count-wrap">{{index + 1}}.</span>
       <div class="image-wrap">
-        <img src="../assets/helmet.svg">
+        <img v-bind:class="[helmetColor]" src="../assets/helmet.svg">
       </div>
       <div class="info-wrap">{{ data.name }}
         <div>{{time}} | {{ data.speed }} km/h</div>
@@ -22,6 +22,9 @@ export default {
     time: function() {
       const time = moment().millisecond(this.data.time).format('mm:ss.SSS')
       return time.valueOf();
+    },
+    helmetColor: function () {
+      return this.data.color.toLocaleLowerCase();
     }
   },
   data:function () {
@@ -49,5 +52,11 @@ export default {
   }
   .image-wrap img{
     margin-left: 20%;
+  }
+  .image-wrap .red {
+    filter: hue-rotate(140deg);
+  }
+  .image-wrap .green {
+    filter: hue-rotate(250deg);
   }
 </style>
