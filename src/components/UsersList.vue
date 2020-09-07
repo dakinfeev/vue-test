@@ -8,15 +8,7 @@
 
     <div class="list-group" id="infinite-list">
       <div class="list-group-item" v-for="(item, key) in items" :key="key">
-        <div class="item-wrap">
-          <div class="count-wrap">{{key + 1}}.</div>
-          <div class="image-wrap">
-            <img src="../assets/helmet.svg">
-          </div>
-          <div>{{ item.name }}
-            <div>{{item.time}} | {{ item.speed }} km/h</div>
-          </div>
-        </div>
+        <UserItem :data="item" :index="key"></UserItem>
       </div>
     </div>
   </div>
@@ -24,8 +16,12 @@
 
 <script>
 import users from '@/api/users';
+import UserItem from '@/components/UserItem';
 export default {
   name: "UsersList",
+  components: {
+    UserItem
+  },
   data: function () {
     return {
       loading: false,
@@ -61,7 +57,9 @@ export default {
 
 <style>
 .list-group-wrapper {
+  width: 320px;
   position: relative;
+  margin: auto;
 }
 .list-group {
   overflow: auto;
@@ -82,7 +80,7 @@ export default {
 }
 .loading {
   text-align: center;
-  position: absolute;
+  position: fixed;
   color: #fff;
   z-index: 9;
   background: red;
