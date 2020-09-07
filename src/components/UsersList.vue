@@ -5,7 +5,6 @@
         <span class="fa fa-spinner fa-spin"></span> Loading
       </div>
     </transition>
-
     <div class="list-group" id="infinite-list">
       <div class="list-group-item" v-for="(item, key) in items" :key="key">
         <UserItem :data="item" :index="key"></UserItem>
@@ -88,8 +87,5 @@ export default {
   border-radius: 5px;
   left: calc(50% - 45px);
   top: calc(50% - 18px);
-}
-.item-wrap {
-  display: flex;
 }
 </style>
