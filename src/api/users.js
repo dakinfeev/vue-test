@@ -3,10 +3,12 @@ import MockAdapter from 'axios-mock-adapter';
 import mocker from 'mocker-data-generator'
 
 export default {
-  getUsers() {
+  getUsers(filterName = '') {
+    let fakerFindName = 'name.findName'
+    fakerFindName = filterName ? fakerFindName.concat(`(${filterName})`) : fakerFindName;
     const user = {
       name: {
-        faker: 'name.findName'
+        faker: fakerFindName
       },
       color: {
         values: ['RED', 'GREEN', 'BLUE']
